@@ -42,5 +42,11 @@ class OBJ {
 }
 
 
+function DataBaseAllToJson()
+{
+  
+
+}
+
 
  ?>
