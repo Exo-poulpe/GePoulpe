@@ -46,7 +46,7 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
 <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body onload="initMap();">
+<body>
   <!-- App root element -->
   <script type="text/javascript">
   // Database name, Version number, Text description, estimated size in byte
@@ -65,8 +65,8 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
 <!-- Panels overlay-->
 <div class="panel-overlay"></div>
 <!-- Left panel with reveal effect-->
-<div class="panel panel-left panel-reveal">
-  <div class="center-block block">
+<div class="panel panel-right panel-reveal">
+  <div class="center-block content-block block">
     <p>Left Panel content here</p>
     <p><a class="panel-close" href="#">Close me</a></p>
   </div>
@@ -78,7 +78,7 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
   <div class="view view-main">
     <!-- Top Navbar-->
     <div class="navbar ">
-      <div class="navbar-inner" style="background-color:#3366ff;">
+      <div id="nav1"class="navbar-inner" style="background-color:#3366ff;">
         <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
         <div class="center sliding title" >GePoulpe</div>
         <div class="right">
@@ -120,7 +120,7 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
     <div class="toolbar-inner" style="background-color:#3366ff;">
       <!-- Toolbar links -->
       <a href="#" class="link"><img src="..\www\img\maps-and-flags.png"/></a>
-      <a href="#" class="link"><img src="..\www\img\controls.png"/></a>
+      <a href="settings.html" class="link"><img src="..\www\img\controls.png"/></a>
     </div>
   </div>
 </div>

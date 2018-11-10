@@ -44,7 +44,7 @@ $$("#about").click(function()
 }
 );
 
-setInterval(AffichePosition, 1000);
+//setInterval(AffichePosition, 1000);
 
 
 function AffichePosition() {
@@ -97,7 +97,7 @@ function PullDatabaseServe(data)
   {
     db.transaction(function (tx)
     {
-      tx.executeSql("INSERT INTO Marker (latitude,longitude,idInfo,idUser) VALUES (" + data[0] +"," + data[1] +"," + data[2] + "," +  data[3] "')");
+      tx.executeSql("INSERT INTO Marker (latitude,longitude,idInfo,idUser) VALUES (" + data[0] +"," + data[1] +"," + data[2] + "," +  data[3] + "')");
     });
   }
 
