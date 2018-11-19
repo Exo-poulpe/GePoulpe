@@ -1,1 +1,15 @@
-{"name":"com.phonegap.helloworld","version":"1.0.0","displayName":"GePoulpe","cordova":{"platforms":["android"]},"dependencies":{"cordova-android":"~7.1.2"}}
+{
+  "name": "com.phonegap.helloworld",
+  "version": "1.0.0",
+  "displayName": "GePoulpe",
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "cordova": "^8.1.2",
+    "cordova-android": "~7.1.2",
+    "cordova-browser": "^5.0.4"
+  }
+}

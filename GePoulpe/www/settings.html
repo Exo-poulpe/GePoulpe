@@ -1,99 +1,126 @@
-<!-- We don't need a full layout in this file because this page will be parsed with Ajax. -->
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+  https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+  * Enable inline JS: add 'unsafe-inline' to default-src
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+-->
 
-<!-- Top Navbar-->
+<!-- Required meta tags-->
 
-<div class="page">
-  <div class="page-content">
-<div class="navbar">
-    <div class="navbar-inner sliding">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
 
-        <div class="left">
-            <a href="#" class="back link">
-                <i class="icon icon-back subtitle"></i>
-            </a>
-        </div>
-        <div class="center title"></div>
-        <div class="right">
-            <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
-        </div>
+<link rel="stylesheet" href=".\lib\leaflet\leaflet.css"/>
+
+<script type="text/javascript" src=".\lib\leaflet\leaflet.js"></script>
+
+
+
+<script type="text/javascript" src=".\js\jquery-3.3.1-min.js"></script>
+
+<!-- Your app title -->
+<title>GePoulpe</title>
+
+<!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
+http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
+-->
+
+<link rel="stylesheet" href=".\lib/framework7/css/framework7.min.css">
+
+<link rel="stylesheet" href=".\lib/framework7/css/framework7.material.min.css">
+<link rel="stylesheet" href=".\lib/framework7/css/framework7.material.colors.min.css">
+
+
+<!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+-->
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner sliding"></div>
     </div>
-</div>
-<div class="block">
-
-
-<div class="block-title">Super Heroes</div>
-<div class="list simple-list">
-  <ul>
-    <li>
-      <span>Batman</span>
-      <label class="toggle toggle-init color-black">
-        <input type="checkbox" checked>
-        <span class="toggle-icon"></span>
-      </label>
-    </li>
-    <li>
-      <span>Aquaman</span>
-      <label class="toggle toggle-init color-blue">
-        <input type="checkbox" checked>
-        <span class="toggle-icon"></span>
-      </label>
-    </li>
-    <li>
-      <span>Superman</span>
-      <label class="toggle toggle-init color-red">
-        <input type="checkbox" checked>
-        <span class="toggle-icon"></span>
-      </label>
-    </li>
-    <li>
-      <span>Hulk</span>
-      <label class="toggle toggle-init color-green">
-        <input type="checkbox">
-        <span class="toggle-icon"></span>
-      </label>
-    </li>
-    <li>
-      <span>Spiderman (Disabled)</span>
-      <label class="toggle toggle-init disabled">
-        <input type="checkbox">
-        <span class="toggle-icon"></span>
-      </label>
-    </li>
-    <li>
-      <span>Ironman (Disabled)</span>
-      <label class="toggle toggle-init toggle-init">
-        <input type="checkbox" checked disabled>
-        <span class="toggle-icon"></span>
-      </label>
-    </li>
-    <li>
-      <span>Thor</span>
-      <label class="toggle toggle-init color-orange">
-        <input type="checkbox" checked>
-        <span class="toggle-icon"></span>
-      </label>
-    </li>
-    <li>
-      <span>Wonder Woman</span>
-      <label class="toggle toggle-init color-pink">
-        <input type="checkbox">
-        <span class="toggle-icon"></span>
-      </label>
-    </li>
-  </ul>
-</div>
-
-
-</div>
-</div>
-</div>
-<!--<div class="pages">
-    <div data-page="about" class="page">
-        <div class="page-content">
-            <div class="content-block">
-                <p>Poulpe en action</p>
-            </div>
-        </div>
+    <div class="page-content">
+      <div class="block-title">Super Heroes</div>
+      <div class="list simple-list">
+        <ul>
+          <li>
+            <span>Batman</span>
+            <label class="toggle toggle-init">
+              <input type="checkbox" checked>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Aquaman</span>
+            <label class="toggle toggle-init color-blue">
+              <input type="checkbox" checked>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Superman</span>
+            <label class="toggle toggle-init color-red">
+              <input type="checkbox" checked>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Hulk</span>
+            <label class="toggle toggle-init color-green">
+              <input type="checkbox">
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Spiderman (Disabled)</span>
+            <label class="toggle toggle-init disabled">
+              <input type="checkbox">
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Ironman (Disabled)</span>
+            <label class="toggle toggle-init toggle-init">
+              <input type="checkbox" checked disabled>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Thor</span>
+            <label class="toggle toggle-init color-orange">
+              <input type="checkbox" checked>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Wonder Woman</span>
+            <label class="toggle toggle-init color-pink">
+              <input type="checkbox">
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+        </ul>
+      </div>
     </div>
-</div>
-</div>-->
+  </div>
+
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+</body>
+
+</html>

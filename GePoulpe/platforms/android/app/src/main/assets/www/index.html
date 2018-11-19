@@ -1,52 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-  Customize this policy to fit your own app's needs. For more guidance, see:
-  https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-  Some notes:
-  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-  * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-  * Enable inline JS: add 'unsafe-inline' to default-src
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
--->
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#2196f3">
+  <!-- Your app title -->
+  <title>My App Test 2018</title>
+  <!-- Path to Framework7 Library CSS -->
 
-<!-- Required meta tags-->
+  <link rel="stylesheet" href=".\leaflet\leaflet.css"/>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="format-detection" content="telephone=no">
-<meta name="msapplication-tap-highlight" content="no">
+  <script type="text/javascript" src=".\leaflet\leaflet.js"></script>
 
-<link rel="stylesheet" href="..\www\lib\leaflet\leaflet.css"/>
-
-<script type="text/javascript" src="..\www\lib\leaflet\leaflet.js"></script>
-
-
-
-<script type="text/javascript" src="..\www\js\jquery-3.3.1-min.js"></script>
-
-<!-- Your app title -->
-<title>GePoulpe</title>
-
-<!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
-http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
--->
-
-<link rel="stylesheet" href="lib/framework7/css/framework7.material.min.css">
-<link rel="stylesheet" href="lib/framework7/css/framework7.material.colors.min.css">
-
-
-<!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
--->
-<link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href=".\css/f7/framework7.min.css">
+  <link rel="stylesheet" href=".\css/f7/framework7-icons.css">
+  <!-- Path to your custom app styles-->
+  <link rel="stylesheet" href="css/app/styles.css">
 </head>
-
-<body onload="initMap();">
+<body>
   <!-- App root element -->
   <script type="text/javascript">
   // Database name, Version number, Text description, estimated size in byte
@@ -65,8 +39,8 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
 <!-- Panels overlay-->
 <div class="panel-overlay"></div>
 <!-- Left panel with reveal effect-->
-<div class="panel panel-left panel-reveal">
-  <div class="center-block block">
+<div class="panel panel-right panel-reveal">
+  <div class="center-block content-block block">
     <p>Left Panel content here</p>
     <p><a class="panel-close" href="#">Close me</a></p>
   </div>
@@ -78,57 +52,58 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
   <div class="view view-main">
     <!-- Top Navbar-->
     <div class="navbar ">
-      <div class="navbar-inner" style="background-color:#3366ff;">
+      <div id="nav1"class="navbar-inner" style="background-color:#3366ff;">
         <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
         <div class="center sliding title" >GePoulpe</div>
         <div class="right">
-          <!--
-          Right link contains only icon - additional "icon-only" class
-          Additional "open-panel" class tells app to open panel when we click on this link
-        -->
-        <a href="#" class="link icon-only open-panel" data-panel="right"><i class="icon icon-bars"></i></a>
-      </div>
-    </div>
-  </div>
-  <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-  <div class="pages navbar-through toolbar-through">
-    <!-- Page, "data-page" contains page name -->
-    <div data-page="index" class="page">
-      <!-- Scrollable page content -->
-      <div class="page-content" style="margin-top:10%;">
-        <div class="content-block">
-          <p>Localiser vos endroits favoris</p>
-          <div id="BaseMap" style="height:300px;">
-            <script>
-            var map = L.map('BaseMap').setView([46.204391, 6.143158], 15);
-
-            L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicG91bHB5IiwiYSI6ImNqbzhtZ3AxbzBiaGUzcW4xbDd4c2xjamoifQ.qlpNSCpKm9WE30e07FI29g",
-            {
-              id: 'mapbox.streets',
-              maxZoom:20,
-            }).addTo(map);
-
-            </script>
-          </div>
-          <a id="about">About app</a>
+          <a href="#" class="link icon-only open-panel" data-panel="right"><i class="icon icon-bars"></i></a>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Bottom Toolbar-->
-  <div class="toolbar" style="size:15px;">
-    <div class="toolbar-inner" style="background-color:#3366ff;">
-      <!-- Toolbar links -->
-      <a href="#" class="link"><img src="..\www\img\maps-and-flags.png"/></a>
-      <a href="#" class="link"><img src="..\www\img\controls.png"/></a>
-    </div>
-  </div>
-</div>
-</div>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
-<script type="text/javascript" src="js/my-app.js"></script>
-</body>
+    <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+    <div class="pages navbar-through toolbar-through">
+      <!-- Page, "data-page" contains page name -->
+      <div data-page="index" class="page">
+        <!-- Scrollable page content -->
+        <div class="page-content" style="margin-top:10%;">
+          <div class="content-block">
+            <p>Localiser vos endroits favoris</p>
+            <div id="BaseMap" style="height:300px;">
 
-</br>
+            </div>
+            <a id="about">About app</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Toolbar-->
+    <div class="toolbar toolbar-bottom-md" style="size:15px;">
+      <div class="toolbar-inner" style="background-color:#3366ff;">
+
+        <a href="marker.html" class="link"><img src=".\img/maps-and-flags.png"/></a>
+        <a href="settings.html" class="link"><img src=".\img/controls.png"/></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript" src=".\js/app/jquery-3.3.1-min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src=".\js/f7/framework7.min.js"></script>
+<script type="text/javascript" src=".\js/app/my-app.js"></script>
+
+
+
+<script>
+var map = L.map('BaseMap').setView([46.204391, 6.143158], 15);
+
+L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicG91bHB5IiwiYSI6ImNqbzhtZ3AxbzBiaGUzcW4xbDd4c2xjamoifQ.qlpNSCpKm9WE30e07FI29g",
+{
+  id: 'mapbox.streets',
+  maxZoom:20,
+}).addTo(map);
+
+</script>
+</body>
 </html>

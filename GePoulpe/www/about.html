@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>My App Test 2018</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="css/f7/framework7.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/app/my-app.css">
+  </head>
+  <body>
+    <!-- App root element -->
+    <div id="app">
+      <!-- Statusbar overlay -->
+      <div class="statusbar"></div>
+	  
+	  <div class="panel panel-left panel-reveal">
+        ... panel content goes here ...
+      </div>
+
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name -->
+        <div data-name="home" class="page">
+
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">About App</div>
+            </div>
+          </div>
+		  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner sliding"></div>
+    </div>
+    <div class="page-content">
+      <div class="block-title">Super Heroes</div>
+      <div class="list simple-list">
+        <ul>
+          <li>
+            <span>Batman</span>
+            <label class="toggle toggle-init">
+              <input type="checkbox" checked>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Aquaman</span>
+            <label class="toggle toggle-init color-blue">
+              <input type="checkbox" checked>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Superman</span>
+            <label class="toggle toggle-init color-red">
+              <input type="checkbox" checked>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Hulk</span>
+            <label class="toggle toggle-init color-green">
+              <input type="checkbox">
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Spiderman (Disabled)</span>
+            <label class="toggle toggle-init disabled">
+              <input type="checkbox">
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Ironman (Disabled)</span>
+            <label class="toggle toggle-init toggle-init">
+              <input type="checkbox" checked disabled>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Thor</span>
+            <label class="toggle toggle-init color-orange">
+              <input type="checkbox" checked>
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+          <li>
+            <span>Wonder Woman</span>
+            <label class="toggle toggle-init color-pink">
+              <input type="checkbox">
+              <span class="toggle-icon"></span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+        </div>
+      </div>
+    </div>
+	
+	<script type="text/javascript" src="cordova.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/f7/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/app/my-app.js"></script>
+  </body>
+</html>
