@@ -87,3 +87,8 @@ function PullDatabaseServe(data)
   }
 
 }
+
+function EmptyDatabase()
+{
+  
+}
