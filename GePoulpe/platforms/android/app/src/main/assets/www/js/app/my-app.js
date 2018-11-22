@@ -15,11 +15,24 @@ var app = new Framework7({
       path: '/about/',
       url: 'about.html',
     },
+	{
+      path: '/settings/',
+      url: 'settings.html',
+    },
+	{
+      path: '/marker/',
+      url: 'marker.html',
+    },
   ],
   // ... other parameters
 });
 
 var mainView = app.views.create('.view-main');
+
+if(EmptyDatabase()==true)
+{
+  
+}
 
 
 $("#about").click(function()
@@ -27,6 +40,19 @@ $("#about").click(function()
   alert("Ge-Poulpe");
 }
 );
+
+$("#refresh").click(function()
+{
+  $.getJSON("htp://127.0.0.1",function()
+  {
+    console.log("json");
+  }).done(function(data)
+  {
+    data.forEach(element => {
+      console.log(element);
+    });
+  });
+});
 
 
 //setInterval(AffichePosition, 1000);
@@ -69,13 +95,6 @@ function DbTransaction(position,datetime)
 
 }
 
-
-function GetJsonOnServe()
-{
-
-
-}
-
 function PullDatabaseServe(data)
 {
   for(let i = 0;i < data.length;i+=1)
@@ -90,5 +109,18 @@ function PullDatabaseServe(data)
 
 function EmptyDatabase()
 {
+  let val = null;
+  db.transaction(function (tx)
+  {
+    tx.executeSql("SELECT * FROM info WHERE idInfo = idInfo", [], function(tx, reponse){
+      if (reponse.rows.item(0)["idInfo"] == null)
+      {
+        val = reponse.rows.item(0)["idInfo"]
+      }
+    }, null);
+  }
+  );
   
+  return val
+
 }

@@ -27,7 +27,7 @@
   var db = openDatabase('DbGePoulpe', '1.0', 'Database', 5 * 1024 * 1024);
   db.transaction(function (tx)
   {
-    tx.executeSql("CREATE TABLE IF NOT EXISTS Marker ( idMarker integer primary key , latitude text not null , longitude text not null ,idInfo integer, FOREIGN KEY (idInfo) REFERENCES info (idInfo))");
+    tx.executeSql("CREATE TABLE IF NOT EXISTS marker ( idMarker integer primary key , latitude text not null , longitude text not null ,idInfo integer, FOREIGN KEY (idInfo) REFERENCES info (idInfo))");
     tx.executeSql("CREATE TABLE IF NOT EXISTS info ( idInfo integer primary key , name text not null,text text not null,nameCreator text not null)");
   }
 );
@@ -67,6 +67,7 @@
         <!-- Scrollable page content -->
         <div class="page-content" style="margin-top:10%;">
           <div class="content-block">
+            <a  class="link center" id="refresh"><img src=".\img/refresh.png"/></a>
             <p>Localiser vos endroits favoris</p>
             <div id="BaseMap" style="height:300px;">
 
@@ -81,8 +82,8 @@
     <div class="toolbar toolbar-bottom-md" style="size:15px;">
       <div class="toolbar-inner" style="background-color:#3366ff;">
 
-        <a href=".\marker.html" class="link"><img src=".\img/maps-and-flags.png"/></a>
-        <a href=".\settings.html" class="link"><img src=".\img/controls.png"/></a>
+        <a href="/marker/" class="link"><img src=".\img/maps-and-flags.png"/></a>
+        <a href="/settings/" class="link" id="marker" ><img src=".\img/controls.png"/></a>
       </div>
     </div>
 
