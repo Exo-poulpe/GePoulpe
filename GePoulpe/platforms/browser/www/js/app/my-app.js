@@ -23,6 +23,10 @@ var app = new Framework7({
       path: '/marker/',
       url: 'marker.html',
     },
+    {
+      path: '/home/',
+      url: 'index.html',
+    },
   ],
   // ... other parameters
 });
@@ -31,7 +35,7 @@ var mainView = app.views.create('.view-main');
 
 if(EmptyDatabase()==true)
 {
-  
+  console.log("database empty");
 }
 
 
@@ -109,18 +113,14 @@ function PullDatabaseServe(data)
 
 function EmptyDatabase()
 {
-  let val = null;
+  let val;
   db.transaction(function (tx)
   {
-    tx.executeSql("SELECT * FROM info WHERE idInfo = idInfo", [], function(tx, reponse){
-      if (reponse.rows.item(0)["idInfo"] == null)
-      {
-        val = reponse.rows.item(0)["idInfo"]
-      }
+    tx.executeSql("SELECT count(idMarker) as number FROM marker", [], function(tx, reponse){
+        val = (reponse.rows.item(0)['number']) ? 1: 0;
+
     }, null);
   }
   );
-  
   return val
-
 }
