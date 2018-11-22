@@ -33,9 +33,16 @@ var app = new Framework7({
 
 var mainView = app.views.create('.view-main');
 
-if(EmptyDatabase()==true)
+
+console.log("Check database");
+if(EmptyDatabase()==0)
 {
   console.log("database empty");
+  getJsonFromDatabase();
+}
+else
+{
+  console.log("database full");
 }
 
 
@@ -111,14 +118,28 @@ function PullDatabaseServe(data)
 
 }
 
+function PullJSONtoDatabaseServe(data)
+{
+  for (let i = 0; i < data.length;i+=1)
+  {
+    
+  }
+}
+
+function getJsonFromDatabase()
+{
+  $.getJSON("http://127.0.0.1",function(data){
+    return data;
+  });
+}
+
 function EmptyDatabase()
 {
-  let val;
+  let val = 0;
   db.transaction(function (tx)
   {
     tx.executeSql("SELECT count(idMarker) as number FROM marker", [], function(tx, reponse){
         val = (reponse.rows.item(0)['number']) ? 1: 0;
-
     }, null);
   }
   );
