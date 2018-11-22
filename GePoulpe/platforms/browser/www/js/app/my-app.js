@@ -65,6 +65,25 @@ $("#refresh").click(function()
   });
 });
 
+$("#sendCoords").click(function(){
+
+  //console.log("Push data");
+  let tmpLat = $("#latitude").val();
+  let tmpLong = $("#longitude").val();
+  console.log(tmpLat);
+  setMarkerInDatabase(tmpLat,tmpLong,1);
+  $("#latitude").text() = "";
+  $("#longitude").text() = "";
+
+});
+
+$("#btnTab-1").click(function(){
+
+  $("#latitude").val() = localStorage.getItem("latitude");
+  $("#longitude").val() = localStorage.getItem("longitude");
+
+});
+
 
 //setInterval(AffichePosition, 1000);
 
@@ -115,15 +134,6 @@ function PullDatabaseServe(data)
       tx.executeSql("INSERT INTO Marker (latitude,longitude,idInfo,idUser) VALUES (" + data[0] +"," + data[1] +"," + data[2] + "," +  data[3] + "')");
     });
   }
-
-}
-
-function PullJSONtoDatabaseServe(data)
-{
-  for (let i = 0; i < data.length;i+=1)
-  {
-    
-  }
 }
 
 function getJsonFromDatabase()
@@ -143,5 +153,22 @@ function EmptyDatabase()
     }, null);
   }
   );
-  return val
+  return val;
+}
+
+
+function setMarkerInDatabase(latitude,longitude,idInfo)
+{
+  SendCoordsData(latitude,longitude,idInfo);
+}
+
+
+function SendCoordsData(latitude,longitude,idInfo)
+{
+  console.log("data send latitude = "+latitude);
+  let request = "INSERT INTO marker (latitude,longitude,idInfo) VALUES (?,?,?)";
+  this.db.transaction(function (tx)
+  {
+    tx.executeSql(request, [latitude, longitude, idInfo] );
+  });
 }

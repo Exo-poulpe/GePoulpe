@@ -69,7 +69,7 @@
           <div class="toolbar tabbar toolbar-bottom-md">
             <div class="toolbar-inner ">
               <!-- Links have "tab-link" class instead of just "link" to switch tabs -->
-              <a href="#tab-1" class="tab-link "><i class="f7-icons material-icons color-black">star</i></a>
+              <a href="#tab-1" class="tab-link " id="btnTab-1"><i class="f7-icons material-icons color-black">star</i></a>
               <a href="#tab-2" class="tab-link tab-link-active"><i class="f7-icons material-icons color-black ">home</i></a>
               <a href="#tab-3" class="tab-link"><i class="f7-icons material-icons color-black ">settings</i></a>
             </div>
@@ -87,7 +87,7 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Latitude</div>
                       <div class="item-input-wrap">
-                        <input type="text" placeholder="46.2">
+                        <input type="text" id="latitude" placeholder="46.2">
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
@@ -99,20 +99,16 @@
                     <div class="item-inner">
                       <div class="item-title item-label">longitude</div>
                       <div class="item-input-wrap">
-                        <input type="text" placeholder="6.1667">
+                        <input type="text" id="longitude" placeholder="6.1667">
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
                   </li>
                 </ul>
               </div>
-
-              <div class="page-content">
                 <div class="block">
                   <div class="row " style="margin-top: 20%;">
                     <div class="list">
-                      <ul>
-                        <li>
                           <label class="item-checkbox item-content">
                             <input type="checkbox" name="demo-checkbox" value="Books" checked="checked" />
                             <i class="icon icon-checkbox"></i>
@@ -120,12 +116,10 @@
                               <div class="item-title">Me localiser</div>
                             </div>
                           </label>
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>
-              </div>
+              <a class="button button-fill" id="sendCoords">Valider</a>
 
             </div>
             <!-- Second tab -->
