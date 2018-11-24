@@ -9,7 +9,7 @@
   <!-- Color theme for statusbar -->
   <meta name="theme-color" content="#2196f3">
   <!-- Your app title -->
-  <title>My App Test 2018</title>
+  <title>GePoulpe</title>
   <!-- Path to Framework7 Library CSS -->
 
   <link rel="stylesheet" href=".\leaflet\leaflet.css" />
@@ -87,7 +87,7 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Latitude</div>
                       <div class="item-input-wrap">
-                        <input type="text" id="latitude" placeholder="46.2">
+                        <input type="text" id="latitude" placeholder="46.2" disabled>
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
@@ -99,26 +99,51 @@
                     <div class="item-inner">
                       <div class="item-title item-label">longitude</div>
                       <div class="item-input-wrap">
-                        <input type="text" id="longitude" placeholder="6.1667">
+                        <input type="text" id="longitude" placeholder="6.1667" disabled>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <br>
+                  <li class="item-content item-input">
+                    <div class="item-media">
+                      <i class="icon demo-list-icon"></i>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title item-label">Texte</div>
+                      <div class="item-input-wrap">
+                        <input type="text" id="textInfo" placeholder="Marker de magasin">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-media">
+                      <i class="icon demo-list-icon"></i>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title item-label">nom</div>
+                      <div class="item-input-wrap">
+                        <input type="text" id="nameInfo" placeholder="fnac">
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
                   </li>
                 </ul>
               </div>
-                <div class="block">
-                  <div class="row " style="margin-top: 20%;">
-                    <div class="list">
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Books" checked="checked" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">Me localiser</div>
-                            </div>
-                          </label>
-                    </div>
+              <div class="block">
+                <div class="row " style="margin-top: 20%;">
+                  <div class="list">
+                    <label class="item-checkbox item-content">
+                      <input type="checkbox" name="demo-checkbox" value="Books" checked="checked" />
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <div class="item-title" id="autolocate">Me localiser</div>
+                      </div>
+                    </label>
                   </div>
                 </div>
+              </div>
               <a class="button button-fill" id="sendCoords">Valider</a>
 
             </div>
@@ -133,67 +158,35 @@
             </div>
             <!-- Third tab -->
             <div class="page-content tab" id="tab-3">
-              <div class="block-title">Super Heroes</div>
-              <div class="list simple-list">
+              <div class="list inline-labels no-hairlines-md">
                 <ul>
-                  <li>
-                    <span>Batman</span>
-                    <label class="toggle toggle-init">
-                      <input type="checkbox" checked>
-                      <span class="toggle-icon"></span>
-                    </label>
+                  <li class="item-content item-input">
+                    <div class="item-media">
+                      <i class="icon demo-list-icon"></i>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title item-label">Username</div>
+                      <div class="item-input-wrap">
+                        <input type="text" id="username" placeholder="Exemple">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
                   </li>
-                  <li>
-                    <span>Aquaman</span>
-                    <label class="toggle toggle-init color-blue">
-                      <input type="checkbox" checked>
-                      <span class="toggle-icon"></span>
-                    </label>
-                  </li>
-                  <li>
-                    <span>Superman</span>
-                    <label class="toggle toggle-init color-red">
-                      <input type="checkbox" checked>
-                      <span class="toggle-icon"></span>
-                    </label>
-                  </li>
-                  <li>
-                    <span>Hulk</span>
-                    <label class="toggle toggle-init color-green">
-                      <input type="checkbox">
-                      <span class="toggle-icon"></span>
-                    </label>
-                  </li>
-                  <li>
-                    <span>Spiderman (Disabled)</span>
-                    <label class="toggle toggle-init disabled">
-                      <input type="checkbox">
-                      <span class="toggle-icon"></span>
-                    </label>
-                  </li>
-                  <li>
-                    <span>Ironman (Disabled)</span>
-                    <label class="toggle toggle-init toggle-init">
-                      <input type="checkbox" checked disabled>
-                      <span class="toggle-icon"></span>
-                    </label>
-                  </li>
-                  <li>
-                    <span>Thor</span>
-                    <label class="toggle toggle-init color-orange">
-                      <input type="checkbox" checked>
-                      <span class="toggle-icon"></span>
-                    </label>
-                  </li>
-                  <li>
-                    <span>Wonder Woman</span>
-                    <label class="toggle toggle-init color-pink">
-                      <input type="checkbox">
-                      <span class="toggle-icon"></span>
-                    </label>
+                  <li class="item-content item-input">
+                    <div class="item-media">
+                      <i class="icon demo-list-icon"></i>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title item-label">Password</div>
+                      <div class="item-input-wrap">
+                        <input type="password" id="password" placeholder="">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
                   </li>
                 </ul>
               </div>
+              <a class="button button-fill" id="connection">Se connecter</a>
             </div>
           </div>
         </div>
@@ -218,6 +211,15 @@
           id: 'mapbox.streets',
           maxZoom: 20,
         }).addTo(map);
+
+      $.getJSON("http://127.0.0.1", function () {
+        console.log("refresh mark");
+      }).done(function (data) {
+        data[1].forEach(element => {
+          console.log(element);
+          var marker = L.marker([element.latitude, element.longitude]).addTo(map);
+        });
+      });
     });
 
   </script>
