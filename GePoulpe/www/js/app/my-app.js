@@ -49,13 +49,7 @@ $("#about").click(function () {
 );
 
 $("#refresh").click(function () {
-  $.getJSON("http://127.0.0.1", function () {
-    console.log("json");
-  }).done(function (data) {
-    data.forEach(element => {
-      console.log(element);
-    });
-  });
+  PullDatabaseServe();
 });
 
 $("#sendCoords").click(function () {
@@ -76,15 +70,17 @@ $("#sendCoords").click(function () {
   }
   else {
     //console.log("manuel");
+    let tmpText = $("#textInfo").val();
+    let tmpName = $("#nameInfo").val();
+    console.log(tmpText);
+    setInfoInDatabase(tmpText, tmpName);
+
     let tmpLat = $("#latitude").val();
     let tmpLong = $("#longitude").val();
     console.log(tmpLat);
     setMarkerInDatabase(tmpLat, tmpLong, 1);
 
-    let tmpText = $("#textInfo").val();
-    let tmpName = $("#nameInfo").val();
-    console.log(tmpText);
-    setInfoInDatabase(tmpText, tmpName);
+
   }
 
 });
@@ -111,9 +107,6 @@ $("#autolocate").click(function () {
 });
 
 
-setInterval(AffichePosition, 1000);
-
-
 function AffichePosition() {
   if (navigator.geolocation) {
     let tmp = navigator.geolocation.getCurrentPosition(getPosition);
@@ -136,7 +129,6 @@ function getPosition(position) {
     date.getSeconds() + "s",
   ];
   alert(new Date(position.timestamp));
-  //localStorage.setItem("Time",datevalues);
 }
 
 
@@ -150,11 +142,20 @@ function DbTransaction(position, datetime) {
 }
 
 function PullDatabaseServe(data) {
-  for (let i = 0; i < data.length; i += 1) {
-    db.transaction(function (tx) {
-      tx.executeSql("INSERT INTO Marker (latitude,longitude,idInfo,idUser) VALUES (" + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + "')");
+  $.getJSON("http://127.0.0.1", function () {
+  }).done(function (data) {
+    data[0].forEach(element => {
+      console.log(element);
+      setInfoInDatabase(element.text, element.name);
     });
-  }
+  });
+
+  $.getJSON("http://127.0.0.1", function () {
+  }).done(function (data) {
+    data[1].forEach(element => {
+      setMarkerInDatabase(element.latitude, element.longitude, element.idInfo);
+    });
+  });
 }
 
 function getJsonFromDatabase() {
@@ -183,11 +184,86 @@ function setMarkerInDatabase(latitude, longitude, idInfo) {
 }
 
 function setInfoInDatabase(text, name) {
-  let request = "INSERT INTO info (text,nameCreator) VALUES (?,?)";
+  let request = "INSERT INTO info (text,name) VALUES (?,?)";
   this.db.transaction(function (tx) {
     tx.executeSql(request, [text, name]);
   });
 }
 
 
+function getNameFromIdInfo(idInfo) {
+  let request = "SELECT (text,name) FROM info WHERE idInfo = (?)";
+  this.db.transaction(function (tx) {
+    tx.executeSql(request, [idInfo]);
+  });
+}
 
+function getAllLocalDatabase() {
+  let val = [[], []];
+  db.transaction(function (tx) {
+    tx.executeSql("SELECT * FROM info", [], function (tx, reponse) {
+
+      for (let i = 0; i < reponse.rows.length; i += 1) {
+        val[0].push(reponse.rows.item(i));
+      }
+    }, null);
+  }
+  );
+
+
+  db.transaction(function (tx) {
+    tx.executeSql("SELECT * FROM marker", [], function (tx, reponse) {
+
+      for (let i = 0; i < reponse.rows.length; i += 1) {
+        val[1].push(reponse.rows.item(i));
+      }
+
+    }, null);
+  }
+  );
+  return val;
+}
+
+function getAllLocalMarkerDatabase(value) {
+
+  let val = [];
+
+  db.transaction(function (tx) {
+    tx.executeSql("SELECT * FROM marker", [], function (tx, reponse) {
+
+      for (let i = 0; i < reponse.rows.length; i += 1) {
+        val.push(reponse.rows.item(i));
+      }
+      return val;
+
+    }, null);
+  }
+  );
+
+}
+
+
+function getInfoFromId(idInfo) {
+  let val = 0;
+  let request = "SELECT text FROM info WHERE idInfo = (?)";
+  db.transaction(function (tx) {
+    tx.executeSql(request, [idInfo], function (tx, reponse) {
+      val = reponse;
+    }, null);
+  }
+  );
+
+  return val;
+}
+
+
+function getNumberOfMarker() {
+  let val = 0;
+  db.transaction(function (tx) {
+    tx.executeSql("SELECT count(*) as number FROM marker", [], function (tx, reponse) {
+      val = reponse.rows.length;
+    }, null);
+  }
+  );
+  return val;
+}
